@@ -1,0 +1,14 @@
+.browse-image {
+    position: relative;
+    border-radius: 50%;
+  }
+
+  label{
+    color: #90979d;
+    font-weight: bold;
+  }
+
+  .sticky th{
+position: sticky;
+top: 0;
+  }

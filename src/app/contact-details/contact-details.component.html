@@ -1,0 +1,516 @@
+<div class="container-fluid" style="margin-top: 2%;">
+  <div class="row">
+
+    <div class="col-lg-5">
+      <div style="border: 1px solid grey; padding: 2%;border-radius: 5px;">
+        <h3>Contact List</h3>
+        
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="form-group">
+              <input type="text" class="form-control" name="searchtype" placeholder="Search contact by Name,Address"
+                [(ngModel)]="searchText">
+            </div>
+          </div>
+        </div>
+        <div style="height: 470px;overflow-y: scroll;">
+          <table class="table sticky">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <!-- <th scope="col">Last</th> -->
+                <th scope="col">Address</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of contactList | searchData:searchText:['First_Name', 'Last_Name','Home_City'];let i=index"
+                (click)="extractDetails(item)" style="cursor: pointer;">
+                <td scope="row"><img src="./../../assets/img/default.png" alt="avatar" width="32" height="32"></td>
+                <!-- <th scope="row"><img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Florimcnee.com%2Fhow-to-create-a-great-avatar%2F&psig=AOvVaw03zdc-3bPMafJRqqhPUPfd&ust=1605339693398000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCIDs8LmC_-wCFQAAAAAdAAAAABAD" alt="avatar" width="32" height="32"></th> -->
+                
+                <td>{{item.First_Name}} {{item.Last_Name}}</td>
+                <!-- <td>{{item.last_name}}</td> -->
+                <td>{{item.Home_City}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+      </div>
+     
+    </div>
+    <div class="col-lg-7">
+      
+      <div style="border: 1px solid grey; padding: 2%;border-radius: 5px;">
+        <h3>Contact Information</h3>
+        
+        <button class="btn btn-primary" style="margin-left: 75%;margin-bottom: 1%;margin-top: -8%;"  *ngIf="details" (click)="editData()">Edit Data</button>
+        <div style="border-top: 1px solid grey;"></div>
+        <br>
+        <div style="height: 470px;overflow-y: scroll;">
+          <div *ngIf="!details && loader">
+            <div>
+              <ngx-skeleton-loader appearance="circle" [theme]="{ width: '30%', height: '200px', 'background-color': '#CACFD2'}">
+              </ngx-skeleton-loader>
+            </div>
+            
+          <ngx-skeleton-loader appearance="square" [theme]="{ width: '50%', height: '25px', 'background-color': '#CACFD2'}">
+          </ngx-skeleton-loader>
+          <ngx-skeleton-loader appearance="square" [theme]="{ width: '70%', height: '15px', 'background-color': '#CACFD2'}">
+          </ngx-skeleton-loader>
+          <div class="row">
+            <div class="col-md-6"><ngx-skeleton-loader appearance="square" [theme]="{ width: '70%', height: '15px', 'background-color': '#CACFD2'}">
+            </ngx-skeleton-loader></div>
+            <div class="col-md-6"><ngx-skeleton-loader appearance="square" [theme]="{ width: '70%', height: '15px', 'background-color': '#CACFD2'}">
+            </ngx-skeleton-loader></div>
+          </div>
+          <div class="row">
+            <div class="col-md-6"><ngx-skeleton-loader appearance="square" [theme]="{ width: '70%', height: '15px', 'background-color': '#CACFD2'}">
+            </ngx-skeleton-loader></div>
+            <div class="col-md-6"><ngx-skeleton-loader appearance="square" [theme]="{ width: '70%', height: '15px', 'background-color': '#CACFD2'}">
+            </ngx-skeleton-loader></div>
+          </div>
+          <div class="row">
+            <div class="col-md-6"><ngx-skeleton-loader appearance="square" [theme]="{ width: '70%', height: '15px', 'background-color': '#CACFD2'}">
+            </ngx-skeleton-loader></div>
+            <div class="col-md-6"><ngx-skeleton-loader appearance="square" [theme]="{ width: '70%', height: '15px', 'background-color': '#CACFD2'}">
+            </ngx-skeleton-loader></div>
+          </div>
+          <ngx-skeleton-loader appearance="square" [theme]="{ width: '40%', height: '20px', 'background-color': '#CACFD2'}">
+          </ngx-skeleton-loader>
+          <ngx-skeleton-loader appearance="square" [theme]="{ width: '70%', height: '15px', 'background-color': '#CACFD2'}">
+          </ngx-skeleton-loader>
+          <div class="row">
+            <div class="col-md-6"><ngx-skeleton-loader appearance="square" [theme]="{ width: '70%', height: '15px', 'background-color': '#CACFD2'}">
+            </ngx-skeleton-loader></div>
+            <div class="col-md-6"><ngx-skeleton-loader appearance="square" [theme]="{ width: '70%', height: '15px', 'background-color': '#CACFD2'}">
+            </ngx-skeleton-loader></div>
+          </div>
+          <div class="row">
+            <div class="col-md-6"><ngx-skeleton-loader appearance="square" [theme]="{ width: '70%', height: '15px', 'background-color': '#CACFD2'}">
+            </ngx-skeleton-loader></div>
+            <div class="col-md-6"><ngx-skeleton-loader appearance="square" [theme]="{ width: '70%', height: '15px', 'background-color': '#CACFD2'}">
+            </ngx-skeleton-loader></div>
+          </div>
+          <div class="row">
+            <div class="col-md-6"><ngx-skeleton-loader appearance="square" [theme]="{ width: '70%', height: '15px', 'background-color': '#CACFD2'}">
+            </ngx-skeleton-loader></div>
+            <div class="col-md-6"><ngx-skeleton-loader appearance="square" [theme]="{ width: '70%', height: '15px', 'background-color': '#CACFD2'}">
+            </ngx-skeleton-loader></div>
+          </div>
+          <ngx-skeleton-loader appearance="square" [theme]="{ width: '50%', height: '25px', 'background-color': '#CACFD2'}">
+          </ngx-skeleton-loader>
+          <ngx-skeleton-loader appearance="square" [theme]="{ width: '70%', height: '15px', 'background-color': '#CACFD2'}">
+          </ngx-skeleton-loader>
+          <div class="row">
+            <div class="col-md-6"><ngx-skeleton-loader appearance="square" [theme]="{ width: '70%', height: '15px', 'background-color': '#CACFD2'}">
+            </ngx-skeleton-loader></div>
+            <div class="col-md-6"><ngx-skeleton-loader appearance="square" [theme]="{ width: '70%', height: '15px', 'background-color': '#CACFD2'}">
+            </ngx-skeleton-loader></div>
+          </div>
+          <div class="row">
+            <div class="col-md-6"><ngx-skeleton-loader appearance="square" [theme]="{ width: '70%', height: '15px', 'background-color': '#CACFD2'}">
+            </ngx-skeleton-loader></div>
+            <div class="col-md-6"><ngx-skeleton-loader appearance="square" [theme]="{ width: '70%', height: '15px', 'background-color': '#CACFD2'}">
+            </ngx-skeleton-loader></div>
+          </div>
+          <div class="row">
+            <div class="col-md-6"><ngx-skeleton-loader appearance="square" [theme]="{ width: '70%', height: '15px', 'background-color': '#CACFD2'}">
+            </ngx-skeleton-loader></div>
+            <div class="col-md-6"><ngx-skeleton-loader appearance="square" [theme]="{ width: '70%', height: '15px', 'background-color': '#CACFD2'}">
+            </ngx-skeleton-loader></div>
+          </div>
+          <ngx-skeleton-loader appearance="square" [theme]="{ width: '40%', height: '20px', 'background-color': '#CACFD2'}">
+          </ngx-skeleton-loader>
+          <ngx-skeleton-loader appearance="square" [theme]="{ width: '70%', height: '15px', 'background-color': '#CACFD2'}">
+          </ngx-skeleton-loader>
+          <div class="row">
+            <div class="col-md-6"><ngx-skeleton-loader appearance="square" [theme]="{ width: '70%', height: '15px', 'background-color': '#CACFD2'}">
+            </ngx-skeleton-loader></div>
+            <div class="col-md-6"><ngx-skeleton-loader appearance="square" [theme]="{ width: '70%', height: '15px', 'background-color': '#CACFD2'}">
+            </ngx-skeleton-loader></div>
+          </div>
+          <div class="row">
+            <div class="col-md-6"><ngx-skeleton-loader appearance="square" [theme]="{ width: '70%', height: '15px', 'background-color': '#CACFD2'}">
+            </ngx-skeleton-loader></div>
+            <div class="col-md-6"><ngx-skeleton-loader appearance="square" [theme]="{ width: '70%', height: '15px', 'background-color': '#CACFD2'}">
+            </ngx-skeleton-loader></div>
+          </div>
+          <div class="row">
+            <div class="col-md-6"><ngx-skeleton-loader appearance="square" [theme]="{ width: '70%', height: '15px', 'background-color': '#CACFD2'}">
+            </ngx-skeleton-loader></div>
+            <div class="col-md-6"><ngx-skeleton-loader appearance="square" [theme]="{ width: '70%', height: '15px', 'background-color': '#CACFD2'}">
+            </ngx-skeleton-loader></div>
+            </div>
+          </div>
+        
+          <div *ngIf="details">
+            <!-- <div>
+              <ngx-skeleton-loader appearance="circle" [theme]="{ width: '30%', height: '200px', 'background-color': '#CACFD2'}">
+              </ngx-skeleton-loader>
+            </div> -->
+            <div>
+              <img src="./../../assets/img/default.png" width="200px" height="200px" class="browse-image" />
+
+            </div>
+            <div>
+              <h5>Personal Information -</h5>
+            </div>
+            <div>
+              <label>Name: </label> {{contactInfo.First_Name}} {{contactInfo.Last_Name}}
+            </div>
+            
+            <div class="row">
+              <div class="col-md-6"><label class="label-control">Gender: </label> {{contactInfo.Gender}}</div><div class="col-md-6"><label>Nickname:</label> {{contactInfo.Nickname}}</div>
+            </div>
+            <div class="row">
+              <div class="col-md-6"><label class="control-label">Birthday:</label> {{contactInfo.Birthday}}</div><div class="col-md-6"><label>Anniversary:</label> {{contactInfo.Anniversary}}</div>
+            </div>
+            <div class="row">
+              <div class="col-md-6"><label class="control-label">Mobile No:</label> {{contactInfo.Mobile_Phone}}</div><div class="col-md-6"><label>Landline No:</label> {{contactInfo.Home_Phone}}</div>
+            </div>
+            <div class="row">
+              <div class="col-md-6"><label class="control-label">Email 1:</label> {{contactInfo.E_mail_Address}}</div><div class="col-md-6"><label>Email 2:</label> {{contactInfo.E_mail_2_Address}}</div>
+            </div>
+
+            <div>
+              <h6>Address -</h6>
+            </div>
+          
+            <div>
+              <label>Home Address:</label> {{contactInfo.Home_Address}}
+            </div>
+            <div class="row">
+              <div class="col-md-6"><label class="label-control">Street:</label> {{contactInfo.Home_Street}}</div><div class="col-md-6"><label>City:</label> {{contactInfo.Home_City}}</div>
+            </div>
+            <div class="row">
+              <div class="col-md-6"><label class="control-label">State:</label> {{contactInfo.Home_State}}</div><div class="col-md-6"><label>Country:</label> {{contactInfo.Home_Country}}</div>
+            </div>
+            <div class="row">
+              <div class="col-md-6"><label class="control-label">Postel Code:</label> {{contactInfo.Home_Postal_Code}}</div><div class="col-md-6"><label>Fax:</label> {{contactInfo.Home_Fax}}</div>
+            </div>
+            
+
+            <div>
+              <h5>Business Information -</h5>
+            </div>
+            <div>
+              <label>Title:</label> {{contactInfo.Job_Title}}
+            </div>
+            <div>
+              <label>Phone No:</label> {{contactInfo.Business_Phone}}
+            </div>
+            <div>
+              <h6>Address -</h6>
+            </div>
+            <div>
+              <label>Business Address:</label> {{contactInfo.Business_Address}}
+            </div>
+            <div class="row">
+              <div class="col-md-6"><label class="label-control">Street:</label> {{contactInfo.Business_Address_2}}</div><div class="col-md-6"><label>City:</label> {{contactInfo.Business_City}}</div>
+            </div>
+            <div class="row">
+              <div class="col-md-6"><label class="control-label">State:</label> {{contactInfo.Business_State}}</div><div class="col-md-6"><label>Country:</label> {{contactInfo.Business_Country}}</div>
+            </div>
+            <div class="row">
+              <div class="col-md-6"><label class="control-label">Postel Code:</label> {{contactInfo.Business_Postal_Code}}</div><div class="col-md-6"><label>Fax:</label> {{contactInfo.Business_Fax}}</div>
+            </div>
+
+          </div>
+          <div *ngIf="!isEdit && isEditLoader">
+            <ngx-skeleton-loader appearance="square" [theme]="{ width: '40%', height: '25px', 'background-color': '#CACFD2'}">
+            </ngx-skeleton-loader>
+            <div class="row">
+              <div class="col-md-6">
+                <ngx-skeleton-loader appearance="square" [theme]="{ width: '25%', height: '15px', 'background-color': '#CACFD2'}">
+                </ngx-skeleton-loader><br>
+                <ngx-skeleton-loader appearance="square" [theme]="{ width: '100%', height: '40px', 'background-color': '#CACFD2'}">
+                </ngx-skeleton-loader>
+              </div>
+              <div class="col-md-6">
+                <ngx-skeleton-loader appearance="square" [theme]="{ width: '25%', height: '15px', 'background-color': '#CACFD2'}">
+                </ngx-skeleton-loader><br>
+                <ngx-skeleton-loader appearance="square" [theme]="{ width: '100%', height: '40px', 'background-color': '#CACFD2'}">
+                </ngx-skeleton-loader>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <ngx-skeleton-loader appearance="square" [theme]="{ width: '25%', height: '15px', 'background-color': '#CACFD2'}">
+                </ngx-skeleton-loader><br>
+                <ngx-skeleton-loader appearance="square" [theme]="{ width: '100%', height: '40px', 'background-color': '#CACFD2'}">
+                </ngx-skeleton-loader>
+              </div>
+              <div class="col-md-6">
+                <ngx-skeleton-loader appearance="square" [theme]="{ width: '25%', height: '15px', 'background-color': '#CACFD2'}">
+                </ngx-skeleton-loader><br>
+                <ngx-skeleton-loader appearance="square" [theme]="{ width: '100%', height: '40px', 'background-color': '#CACFD2'}">
+                </ngx-skeleton-loader>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <ngx-skeleton-loader appearance="square" [theme]="{ width: '25%', height: '15px', 'background-color': '#CACFD2'}">
+                </ngx-skeleton-loader><br>
+                <ngx-skeleton-loader appearance="square" [theme]="{ width: '100%', height: '40px', 'background-color': '#CACFD2'}">
+                </ngx-skeleton-loader>
+              </div>
+              <div class="col-md-6">
+                <ngx-skeleton-loader appearance="square" [theme]="{ width: '25%', height: '15px', 'background-color': '#CACFD2'}">
+                </ngx-skeleton-loader><br>
+                <ngx-skeleton-loader appearance="square" [theme]="{ width: '100%', height: '40px', 'background-color': '#CACFD2'}">
+                </ngx-skeleton-loader>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <ngx-skeleton-loader appearance="square" [theme]="{ width: '25%', height: '15px', 'background-color': '#CACFD2'}">
+                </ngx-skeleton-loader><br>
+                <ngx-skeleton-loader appearance="square" [theme]="{ width: '100%', height: '40px', 'background-color': '#CACFD2'}">
+                </ngx-skeleton-loader>
+              </div>
+              <div class="col-md-6">
+                <ngx-skeleton-loader appearance="square" [theme]="{ width: '25%', height: '15px', 'background-color': '#CACFD2'}">
+                </ngx-skeleton-loader><br>
+                <ngx-skeleton-loader appearance="square" [theme]="{ width: '100%', height: '40px', 'background-color': '#CACFD2'}">
+                </ngx-skeleton-loader>
+              </div>
+            </div>
+            <ngx-skeleton-loader appearance="square" [theme]="{ width: '40%', height: '25px', 'background-color': '#CACFD2'}">
+            </ngx-skeleton-loader>
+            <div class="row">
+              <div class="col-md-6">
+                <ngx-skeleton-loader appearance="square" [theme]="{ width: '25%', height: '15px', 'background-color': '#CACFD2'}">
+                </ngx-skeleton-loader><br>
+                <ngx-skeleton-loader appearance="square" [theme]="{ width: '100%', height: '40px', 'background-color': '#CACFD2'}">
+                </ngx-skeleton-loader>
+              </div>
+              <div class="col-md-6">
+                <ngx-skeleton-loader appearance="square" [theme]="{ width: '25%', height: '15px', 'background-color': '#CACFD2'}">
+                </ngx-skeleton-loader><br>
+                <ngx-skeleton-loader appearance="square" [theme]="{ width: '100%', height: '40px', 'background-color': '#CACFD2'}">
+                </ngx-skeleton-loader>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <ngx-skeleton-loader appearance="square" [theme]="{ width: '25%', height: '15px', 'background-color': '#CACFD2'}">
+                </ngx-skeleton-loader><br>
+                <ngx-skeleton-loader appearance="square" [theme]="{ width: '100%', height: '40px', 'background-color': '#CACFD2'}">
+                </ngx-skeleton-loader>
+              </div>
+              <div class="col-md-6">
+                <ngx-skeleton-loader appearance="square" [theme]="{ width: '25%', height: '15px', 'background-color': '#CACFD2'}">
+                </ngx-skeleton-loader><br>
+                <ngx-skeleton-loader appearance="square" [theme]="{ width: '100%', height: '40px', 'background-color': '#CACFD2'}">
+                </ngx-skeleton-loader>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <ngx-skeleton-loader appearance="square" [theme]="{ width: '25%', height: '15px', 'background-color': '#CACFD2'}">
+                </ngx-skeleton-loader><br>
+                <ngx-skeleton-loader appearance="square" [theme]="{ width: '100%', height: '40px', 'background-color': '#CACFD2'}">
+                </ngx-skeleton-loader>
+              </div>
+              <div class="col-md-6">
+                <ngx-skeleton-loader appearance="square" [theme]="{ width: '25%', height: '15px', 'background-color': '#CACFD2'}">
+                </ngx-skeleton-loader><br>
+                <ngx-skeleton-loader appearance="square" [theme]="{ width: '100%', height: '40px', 'background-color': '#CACFD2'}">
+                </ngx-skeleton-loader>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <ngx-skeleton-loader appearance="square" [theme]="{ width: '25%', height: '15px', 'background-color': '#CACFD2'}">
+                </ngx-skeleton-loader><br>
+                <ngx-skeleton-loader appearance="square" [theme]="{ width: '100%', height: '40px', 'background-color': '#CACFD2'}">
+                </ngx-skeleton-loader>
+              </div>
+              <div class="col-md-6">
+                <ngx-skeleton-loader appearance="square" [theme]="{ width: '25%', height: '15px', 'background-color': '#CACFD2'}">
+                </ngx-skeleton-loader><br>
+                <ngx-skeleton-loader appearance="square" [theme]="{ width: '100%', height: '40px', 'background-color': '#CACFD2'}">
+                </ngx-skeleton-loader>
+              </div>
+            </div>
+            
+          </div>
+          <div *ngIf="isEdit">
+            <form  [formGroup]="editForm">
+              <div class="form-group">
+                <div>
+                  <h5>Personal Information -</h5>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>First Name</label>
+                    <input type="text" class="form-control" formControlName="First_Name">
+                  </div>
+                  <div class="col-md-6">
+                    <label>Last Name</label>
+                    <input type="text" class="form-control" formControlName="Last_Name">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Gender</label>
+                    <!-- <input type="text" class="form-control" formControlName="Gender"> -->
+                    <select class="form-control demo-item mr-2" id="selectStatus" name="selectStatus" name="gender" formControlName="Gender">
+                      <option value="">Select</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                    
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label>Nickname</label>
+                    <input type="text" class="form-control" formControlName="Nickname">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Birthday</label>
+                    <input type="date" class="form-control" formControlName="Birthday">
+                  </div>
+                  <div class="col-md-6">
+                    <label>Anniversary</label>
+                    <input type="date" class="form-control" formControlName="Anniversary">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Mobile No</label>
+                    <input type="text" class="form-control" formControlName="Mobile_Phone">
+                  </div>
+                  <div class="col-md-6">
+                    <label>Landline No</label>
+                    <input type="text" class="form-control" formControlName="Home_Phone">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Email 1</label>
+                    <input type="text" class="form-control" formControlName="E_mail_Address">
+                  </div>
+                  <div class="col-md-6">
+                    <label>Email 2</label>
+                    <input type="text" class="form-control" formControlName="E_mail_2_Address">
+                  </div>
+                </div>
+
+                <div>
+                  <h6>Address -</h6>
+                </div>
+                <div class="row">
+                  <div class="col-md-8">
+                    <label>Home Address</label>
+                    <input type="text" class="form-control" formControlName="Home_Address">
+                  </div>
+                 
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Street</label>
+                    <input type="text" class="form-control" formControlName="Home_Street">
+                  </div>
+                  <div class="col-md-6">
+                    <label>City</label>
+                    <input type="text" class="form-control" formControlName="Home_City">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>State</label>
+                    <input type="text" class="form-control" formControlName="Home_State">
+                  </div>
+                  <div class="col-md-6">
+                    <label>Country</label>
+                    <input type="text" class="form-control" formControlName="Home_Country">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Postel Code</label>
+                    <input type="text" class="form-control" formControlName="Home_Postal_Code">
+                  </div>
+                  <div class="col-md-6">
+                    <label>Fax</label>
+                    <input type="text" class="form-control" formControlName="Home_Fax">
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div>
+                  <h5>Business Information -</h5>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Title</label>
+                    <input type="text" class="form-control" formControlName="Job_Title">
+                  </div>
+                  
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Phone No</label>
+                    <input type="text" class="form-control" formControlName="Business_Phone">
+                  </div>
+                  
+                </div>
+              
+
+                <div>
+                  <h6>Address -</h6>
+                </div>
+                <div class="row">
+                  <div class="col-md-8">
+                    <label>Business Address</label>
+                    <input type="text" class="form-control" formControlName="Business_Address">
+                  </div>
+                 
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Street</label>
+                    <input type="text" class="form-control" formControlName="Business_Address_2">
+                  </div>
+                  <div class="col-md-6">
+                    <label>City</label>
+                    <input type="text" class="form-control" formControlName="Business_City">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>State</label>
+                    <input type="text" class="form-control" formControlName="Business_State">
+                  </div>
+                  <div class="col-md-6">
+                    <label>Country</label>
+                    <input type="text" class="form-control" formControlName="Business_Country">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Postel Code</label>
+                    <input type="text" class="form-control" formControlName="Business_Postal_Code">
+                  </div>
+                  <div class="col-md-6">
+                    <label>Fax</label>
+                    <input type="text" class="form-control" formControlName="Business_Fax">
+                  </div>
+                </div>
+              </div>
+
+              <button class="btn btn-primary" style="margin-left: 45%;" (click)="saveData(editForm.value)">Save Data</button>
+            </form>
+          </div>
+          
+        </div>
+
+        
+      </div>
+    </div>
+  </div>
+</div>
